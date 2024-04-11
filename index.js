@@ -10,10 +10,22 @@ const server = http.createServer(app);
 
 const io = new Server(server , {
     cors: {
-        origin: "https://localhost:5173",
+        origin: "http://localhost:5173",
         methods: ["GET" , "POST"],
     },
 });
+
+io.on("connection", (socket) => {
+    console.log(`User Connected: ${socket.id}`);
+
+    socket.on("join_room", (data)=>{
+        socket.join(data);
+        console.log(`user with id: ${socket.id} joined room: ${data}`)
+    })
+    socket.on("disconnect" , ()=>{
+        console.log("user disconnected ", socket.id)
+    })
+})
 
 server.listen(3001, () => {
     console.log("Server Started on PORT:3001")
