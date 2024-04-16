@@ -44,10 +44,8 @@ async function updateUserslistAndCodeMap(io, socket, roomId) {
 
 //Whenever someone connects this gets executed
 io.on('connection', function (socket) {
-    console.log('A user connected', socket.id)
 
     socket.on("when a user joins", async ({ roomId, username }) => {
-        console.log("username: ", username)
         socketID_to_Users_Map[socket.id] = { username }
         socket.join(roomId)
 
@@ -118,7 +116,6 @@ io.on('connection', function (socket) {
 
     //Whenever someone disconnects this code executed
     socket.on('disconnect', function () {
-        console.log('A user disconnected')
     })
 })
 
