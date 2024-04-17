@@ -119,7 +119,7 @@ io.on('connection', function (socket) {
     })
 })
 
-const PORT = 3001
+const PORT = 4000;
 
 server.listen(PORT, function () {
     console.log(`listening on port : ${PORT}`)
