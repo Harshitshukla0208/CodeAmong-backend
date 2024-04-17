@@ -118,6 +118,9 @@ io.on('connection', function (socket) {
     socket.on('disconnect', function () {
     })
 })
+app.get('/test',async function(req,res){
+    res.json({message:"started"})
+});
 
 const PORT = 4000;
 
